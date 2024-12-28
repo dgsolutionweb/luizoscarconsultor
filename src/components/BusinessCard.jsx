@@ -12,6 +12,7 @@ import {
   useTheme, 
   Link, 
   Avatar,
+  Tooltip
 } from '@mui/material';
 import {
   Phone,
@@ -22,6 +23,8 @@ import {
   Business,
   EmojiObjects,
   Store,
+  Share,
+  SaveAlt,
 } from '@mui/icons-material';
 import bmLogo from '../assets/bm.png';
 import profilePhoto from '../assets/luiz.jpeg';
@@ -38,6 +41,47 @@ const BusinessCard = () => {
     phone: '+55 (XX) XXXXX-XXXX',
     email: 'luiz.oscar@bmtech.com',
     linkedin: 'linkedin.com/in/luizoscar',
+  };
+
+  const generateVCard = () => {
+    const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Luiz Oscar Zuliani
+ORG:BM TECH
+TITLE:Engenheiro Eletricista
+TEL:+55 17 99196-0585
+URL;type=WhatsApp:https://wa.me/17991960585
+URL;type=LinkedIn:https://www.linkedin.com/in/luiz-oscar-zuliani-de-oliveira-neto-12620017b
+END:VCARD`;
+    
+    const blob = new Blob([vcard], { type: 'text/vcard' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'luiz-oscar-bmtech.vcf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Luiz Oscar - BM TECH',
+      text: 'Cartão de Visita Digital - BM TECH',
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: copy to clipboard
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copiado para a área de transferência!');
+      }
+    } catch (err) {
+      console.error('Erro ao compartilhar:', err);
+    }
   };
 
   return (
@@ -259,6 +303,51 @@ const BusinessCard = () => {
                 </Link>
               </Stack>
             </motion.div>
+
+            <Stack 
+              direction="row" 
+              spacing={3} 
+              alignItems="center" 
+              justifyContent="center" 
+              sx={{ mb: 4 }}
+            >
+              <Tooltip title="Salvar Contato">
+                <IconButton 
+                  onClick={generateVCard}
+                  sx={{
+                    backgroundColor: 'rgba(26, 35, 126, 0.04)',
+                    border: '1px solid rgba(26, 35, 126, 0.08)',
+                    p: 1.5,
+                    transition: 'all 0.3s ease-in-out',
+                    '&:hover': {
+                      backgroundColor: 'rgba(26, 35, 126, 0.08)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 4px 8px rgba(26, 35, 126, 0.1)',
+                    }
+                  }}
+                >
+                  <SaveAlt sx={{ fontSize: '1.4rem', color: 'primary.main' }} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Compartilhar Cartão">
+                <IconButton 
+                  onClick={handleShare}
+                  sx={{
+                    backgroundColor: 'rgba(26, 35, 126, 0.04)',
+                    border: '1px solid rgba(26, 35, 126, 0.08)',
+                    p: 1.5,
+                    transition: 'all 0.3s ease-in-out',
+                    '&:hover': {
+                      backgroundColor: 'rgba(26, 35, 126, 0.08)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 4px 8px rgba(26, 35, 126, 0.1)',
+                    }
+                  }}
+                >
+                  <Share sx={{ fontSize: '1.4rem', color: 'primary.main' }} />
+                </IconButton>
+              </Tooltip>
+            </Stack>
 
             {/* Footer */}
             <Box 
