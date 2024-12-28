@@ -33,12 +33,12 @@ const BusinessCard = () => {
   const theme = useTheme();
 
   const contactInfo = {
-    name: 'Luiz Oscar',
-    position: 'Consultor de Vendas',
+    name: 'Luiz Oscar Zuliani',
+    position: 'Especialista em implantação de sistemas fotovoltaicos',
     company: 'BM TECH',
     address: 'Avenida 13, nº 577, Centro, Guaíra - SP, 14790-000',
-    specialties: ['Energia Solar', 'Projetos Fotovoltaicos', 'Eficiência Energética'],
-    phone: '+55 (XX) XXXXX-XXXX',
+    specialties: ['Energia Solar', 'Projetos Fotovoltaicos', 'Consultoria Energética'],
+    phone: '(17) 98804-8180',
     email: 'luiz.oscar@bmtech.com',
     linkedin: 'linkedin.com/in/luizoscar',
   };
@@ -48,9 +48,9 @@ const BusinessCard = () => {
 VERSION:3.0
 FN:Luiz Oscar Zuliani
 ORG:Consultor Luiz Oscar
-TITLE:Engenheiro Eletricista
-TEL:+55 17 99196-0585
-URL;type=WhatsApp:https://wa.me/17991960585
+TITLE:Especialista em implantação de sistemas fotovoltaicos
+TEL:+55 17 98804-8180
+URL;type=WhatsApp:https://wa.me/17988048180
 URL;type=LinkedIn:https://www.linkedin.com/in/luiz-oscar-zuliani-de-oliveira-neto-12620017b
 END:VCARD`;
     
@@ -252,7 +252,7 @@ END:VCARD`;
             >
               <Stack spacing={2.5} alignItems="center" sx={{ mb: 4 }}>
                 <Link 
-                  href="tel:17991960585"
+                  href="tel:17988048180"
                   underline="none"
                   sx={{ 
                     display: 'flex', 
@@ -273,11 +273,11 @@ END:VCARD`;
                   }}
                 >
                   <Phone sx={{ fontSize: '1.4rem' }} />
-                  <Typography sx={{ fontWeight: 500 }}>(17) 99196-0585</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>(17) 98804-8180</Typography>
                 </Link>
                 
                 <Link 
-                  href="https://wa.me/17991960585"
+                  href="https://wa.me/17988048180"
                   target="_blank"
                   underline="none"
                   sx={{ 
