@@ -47,7 +47,7 @@ const BusinessCard = () => {
     const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:Luiz Oscar Zuliani
-ORG:BM TECH
+ORG:Consultor Luiz Oscar
 TITLE:Engenheiro Eletricista
 TEL:+55 17 99196-0585
 URL;type=WhatsApp:https://wa.me/17991960585
@@ -58,7 +58,7 @@ END:VCARD`;
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'luiz-oscar-bmtech.vcf');
+    link.setAttribute('download', 'consultor-luiz-oscar.vcf');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
